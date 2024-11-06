@@ -1,0 +1,58 @@
+---
+interface Props {
+    name: string;
+    user: string;
+    time: string;
+    avatar: string;
+}
+
+const options = [
+    {title: "Comment", icon: "fa-solid fa-comment-dots", stats: 200, color: "blue"},
+    {title: "Retweet", icon: "fa-solid fa-repeat", stats: 200, color: "green"},
+    {title: "Like", icon: "fa-solid fa-heart", stats: 200, color: "red"},
+    {title: "Stats", icon: "fa-solid fa-chart-simple", stats: 200, color: "yellow"},
+]
+
+const secondOptions = [
+    {icon: "fa-solid fa-bookmark"},
+    {icon: "fa-solid fa-share-from-square"},
+]
+
+const { name, user, time, avatar } = Astro.props;
+---
+
+<a href="">
+    <article class="flex py-2 w-full border-b-[1px] pr-2 border-gray-600">
+        <div class="col-span-1 px-4 py-1">
+            <img class="rounded-full size-14" src={avatar} alt="">
+        </div>
+        <div class="w-full">
+            <div class="flex gap-2 items-center">
+                <p class="font-bold whitespace-nowrap">{name}</p>
+                <p class="opacity-80">{user}</p>
+                <i class="fa-solid fa-circle text-[4px] opacity-80"></i>
+                <p class="opacity-80">{time}</p>
+            </div>
+            <slot />
+            <div class="flex justify-between">
+                {
+                    options.map(n => (
+                        <button class:list={["transition", `hover:text-${n.color}-400`]}>
+                            <i class={`mr-1 ${n.icon}`}></i>
+                            {n.stats}
+                        </button>
+                    ))
+                }
+                <div class="flex w-auto gap-4 items-center">
+                    {
+                        secondOptions.map(n => (
+                            <button>
+                                <i class:list={["hover:text-blue-400 transition", `${n.icon}`]}></i>
+                            </button>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </article>
+</a>

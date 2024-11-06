@@ -1,0 +1,28 @@
+---
+import TweetCard from "../index/tweetcard.astro"
+
+const tweets = [
+    {
+        name: 'John Doe',
+        username: '@johndoe',
+        tweet: 'Crear un ticket para hacer un cambio en Azure y que tenga que pasar por 10 aprobaciones antes que se pueda mover algo…. Nadie de los que aprueba sabe nada de Azure…',
+        time: '1h',
+        avatar: '/elon.jpg'
+    },
+]
+---
+
+<aside>
+    {
+        tweets.map(tweet => (
+            <TweetCard
+                name={tweet.name}
+                user={tweet.username}
+                time={tweet.time}
+                avatar={tweet.avatar}
+            >
+                <p class="pb-2">{tweet.tweet}</p>
+            </TweetCard>
+        ))
+    }
+</aside>
