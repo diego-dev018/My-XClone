@@ -22,7 +22,9 @@ const { title } = Astro.props;
 	</head>
 	<body class="flex content-between justify-between">
 		<Left />
-		<slot />
+		<div id="main" class="border-gray-600 h-dvh w-[750px] text-white overflow-auto border-x-[1px]">
+			<slot />
+		</div>
 		<Right />
 	</body>
 </html>
@@ -30,5 +32,8 @@ const { title } = Astro.props;
 	html {
 		font-family: system-ui, sans-serif;
 		background: #13151a;
+	}
+	#main {
+		scrollbar-width: none;
 	}
 </style>

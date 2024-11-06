@@ -1,7 +1,49 @@
 ---
+import XIcon from '../icons/x-logo.astro';
 
+const options = [
+    {name: "Home", icon: "fa-solid fa-home", href: "/"},
+    {name: "Explore", icon: "fa-solid fa-hashtag", href: "/explore"},
+    {name: "Notifications", icon: "fa-solid fa-bell", href: "/notifications"},
+    {name: "Messages", icon: "fa-solid fa-envelope", href: "/messages"},
+    {name: "Bookmarks", icon: "fa-solid fa-bookmark", href: "/bookmarks"},
+    {name: "Lists", icon: "fa-solid fa-list", href: "/lists"},
+    {name: "Profile", icon: "fa-solid fa-user", href: "/profile"},
+    {name: "More", icon: "fa-solid fa-ellipsis-h", href: "/more"},
+]
 ---
 
-<aside class="w-auto">
-
+<aside class="w-[500px] text-white">
+    <div class="flex flex-col gap-4 pl-[25%] py-4">
+        <a href="/" class="p-3 w-fit rounded-full section-to"><XIcon size="40" /></a>
+        {
+            options.map(n => (
+                <a href={n.href} class="flex gap-4 w-fit px-4 py-2 items-center rounded-3xl section-to">
+                    <i class:list={["text-3xl w-8 text-center", `${n.icon}`]}></i>
+                    <p class="text-2xl font-bold">{n.name}</p>
+                </a>
+            ))
+        }
+        <a href="" class="bg-blue-500 mr-10 py-2 rounded-full">
+            <p class="text-2xl text-center font-bold">Post</p>
+        </a>
+        <button class="flex w-full gap-4 mr-10 items-center p-4 rounded-full bg-opacity-0 hover:bg-opacity-35 bg-slate-800">
+            <img src="pfp.jpg" class="size-12 rounded-full" alt="">
+            <div class="text-start">
+                <p class="font-bold">DiegoDev</p>
+                <p>@diegodev018</p>
+            </div>
+            <i class:list={["fa-solid fa-ellipsis-h", "w-full text-end pr-2"]}></i>
+        </div>
+    </div>
 </aside>
+
+<style>
+    .section-to {
+        transition: background-color 0.3s;
+        background-color: transparent;
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+</style>

@@ -7,6 +7,12 @@ const options = [
     {name: "calendar", icon: "fa-regular fa-calendar"},
     {name: "location", icon: "fa-solid fa-location-dot"},
 ]
+
+const toShowOptions = [
+    {name: "Everyone"},
+    {name: "People follow you"},
+    {name: "Only mentioned"},
+]
 ---
 
 <aside>
@@ -16,22 +22,33 @@ const options = [
         </a>
         <div class="col-span-7 mr-4">
             <div id="border-1" class="border-b-[1px] border-gray-600">
-                <button class="flex my-2 gap-2 px-4 pb-1 rounded-2xl border-[1px] border-gray-400">
-                    <p>Everyone</p>
-                    <i class="fa-solid fa-caret-down content-center pt-[2px]"></i>
-                </button>
+                <div>
+                    <button id="active-form" class="flex my-2 gap-2 px-4 pb-1 rounded-2xl border-[1px] border-gray-400 hover:border-white transition">
+                        <p>Everyone</p>
+                        <i class="fa-solid fa-caret-down content-center pt-[2px]"></i>
+                    </button>
+                    <div class="fixed">
+                        <div id="form" class="bg-slate-800 gap-1 overflow-auto shadow-gray-900 shadow-lg w-fit rounded-lg flex-col py-2 px-1 max-h-48 hidden">
+                            {
+                                toShowOptions.map(n => (
+                                    <button class="text-white font-semibold bg-slate-400 bg-opacity-0 hover:bg-opacity-10 px-1 pb-1 rounded-md transition text-start">{n.name}</button>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
                 <textarea class="resize-none w-full bg-transparent text-xl py-2 outline-none overflow-hidden" name="" id="" placeholder="What is happening?!" maxlength="200"></textarea>
-                <button class="flex gap-2 rounded-2xl py-1 px-3 my-2 font-semibold hover:bg-blue-500 hover:bg-opacity-15 transition">
+                <button class="flex gap-2 rounded-2xl py-1 px-3 my-2 font-semibold bg-blue-500 bg-opacity-0 hover:bg-opacity-10 transition">
                     <i class="fa-solid fa-earth-americas content-center"></i>
                     <p class="">Everyone can reply</p>
                 </button>
             </div>
             <div class="flex justify-between py-2">
-                <div class="flex gap-6">
+                <div class="flex gap-2">
                     <!-- <button><i class="fa-regular fa-image"></i></button> -->
                     {
                         options.map(option => (
-                            <button><i class:list={[`${option.icon}`, "hover:text-blue-500 hover:contrast-150 text-xl transition"]}></i></button>
+                            <button><i class:list={[`${option.icon}`, "hover:text-blue-500 px-2 bg-gray-600 bg-opacity-0 hover:bg-opacity-35 rounded-full hover:contrast-150 text-xl transition"]}></i></button>
                         ))
                     }
                 </div>
@@ -44,5 +61,11 @@ const options = [
 </aside>
 
 <script>
-    
+    const activeForm = document.querySelector("#active-form");
+    const form = document.querySelector("#form");
+
+    activeForm?.addEventListener("click", () => {
+        form?.classList.toggle("hidden");
+        form?.classList.toggle("flex");
+    });
 </script>

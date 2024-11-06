@@ -13,9 +13,9 @@ const Around = pages.length <= 3;
     <ul class:list={["flex py-2 border-gray-600 border-b-[1px] overflow-y-auto", Around ? "justify-around" : "justify-start"]}>
       {
         pages.map(page => (
-            <li>
-                <a href={page.href}>
-                    <p class:list={["font-semibold text-lg text-center", Around ? "" : "min-w-44"]}>{page.title}</p>
+            <li class="">
+                <a href={page.href} class="w-full">
+                    <p class:list={["font-semibold text-lg text-center hover:text-blue-100 transition", Around ? "" : "min-w-44"]}>{page.title}</p>
                 </a>
             </li>
         ))

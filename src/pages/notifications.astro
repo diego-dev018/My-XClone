@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro"
+
+const options = [
+    { value: "all", label: "All" },
+    { value: "verified", label: "Verified" },
+    { value: "mentions", label: "Mentions" },
+]
+---
+
+<Layout title="X - Notifications">
+    <main>
+        <section class="border-b-[1px]">
+            <h1 class="px-4 py-2 text-2xl font-bold">Notifications</h1>
+            <div class="flex justify-around">
+                {
+                    options.map(n => (
+                        <button class="py-4 w-full font-semibold">
+                            {n.label}
+                        </button>
+                    ))
+                }
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    button {
+        transition: background-color 0.3s;
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }        
+    }
+</style>
+
+<script>
+
+</script>

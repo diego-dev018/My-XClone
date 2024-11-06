@@ -12,16 +12,10 @@ const { class: className } = Astro.props;
   
 ---
 
-<Layout title="Welcome to Astro.">
-	<main class:list={["border-gray-600 border-x-[1px] h-dvh w-[750px]", className]}>
+<Layout title="X - Home">
+	<main class:list={[className]}>
 		<Topvar />
 		<Writetweet />
 		<Tweets />
 	</main>
 </Layout>
-
-<style>
-	main {
-		color: white;
-	}
-</style>
